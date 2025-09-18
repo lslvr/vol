@@ -16,8 +16,8 @@ int main(int argc, char **argv) {
     elem = snd_mixer_find_selem(handle, sid);
     snd_mixer_selem_get_playback_volume(elem, SND_MIXER_SCHN_FRONT_LEFT, &vol);
 
-    if (*argv[1] == '+') vol++;
-    if (*argv[1] == '-') vol--;
+    if (*argv[1] == '+') vol += 2;
+    if (*argv[1] == '-') vol -= 2;
 
     snd_mixer_selem_set_playback_volume_all(elem, vol);
 }
