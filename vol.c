@@ -12,9 +12,13 @@ int main(int argc, char **argv) {
     snd_mixer_load(handle);
     snd_mixer_selem_id_malloc(&sid);
     snd_mixer_selem_id_set_index(sid, 0);
+    snd_mixer_selem_id_set_name(sid, "Capture");
+    elem = snd_mixer_find_selem(handle, sid);
+    snd_mixer_selem_set_capture_switch_all(elem, 1);
     snd_mixer_selem_id_set_name(sid, "Master");
     elem = snd_mixer_find_selem(handle, sid);
     snd_mixer_selem_get_playback_volume(elem, SND_MIXER_SCHN_FRONT_LEFT, &vol);
+    snd_mixer_selem_set_playback_switch_all(elem, 1);
 
     if (*argv[1] == '+') vol += 2;
     if (*argv[1] == '-') vol -= 2;
