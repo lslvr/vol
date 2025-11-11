@@ -20,8 +20,8 @@ int main(int argc, char **argv) {
     snd_mixer_selem_get_playback_volume(elem, SND_MIXER_SCHN_FRONT_LEFT, &vol);
     snd_mixer_selem_set_playback_switch_all(elem, 1);
 
-    if (*argv[1] == '+') vol += 2;
-    if (*argv[1] == '-') vol -= 2;
+    if (*argv[1] == '+') vol += 10;
+    if (*argv[1] == '-') vol -= 10;
 
     snd_mixer_selem_set_playback_volume_all(elem, vol);
 }
